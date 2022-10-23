@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title> Неватрип </title>
+
+</head>
+<style>
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+</style>
+
+
+<body>
+
+<table border="">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>event_id</th>
+			<th>event_date</th>
+			<th>ticket_adult_price</th>
+			<th>ticket_adult_quantity</th>
+			<th>ticket_kid_price</th>
+			<th>ticket_kid_quantity</th>
+			<th>group_adult_price</th>
+			<th>group_adult_quantity</th>
+			<th>preferential_adult_price</th>
+			<th>preferential_adult_quantity</th>
+			<th>barcode</th>
+			<th>user_id</th>
+			<th>equal_price</th>
+			<th>created</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>003</td>
+			<td>2021-08-21 13:00:00</td>
+			<td>700</td>
+			<td>1</td>
+			<td>450</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>11111111</td>
+			<td>00451</td>
+			<td>700</td>
+			<td>2021-01-11 13:22:09</td>
+		</tr>
+		<tr>
+			<td>1_00</td>
+			<td>003_00</td>
+			<td>2021-08-21 13:00:00</td>
+			<td>700</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>11111111_00</td>
+			<td>00451</td>
+			<td>700</td>
+			<td>2021-01-11 13:22:09</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>006</td>
+			<td>2021-07-29 18:00:00</td>
+			<td>1000</td>
+			<td>0</td>
+			<td>800</td>
+			<td>2</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>22222222</td>
+			<td>00364</td>
+			<td>1600</td>
+			<td>2021-01-12 16:62:08</td>
+		</tr>
+		<tr>
+			<td>2_00</td>
+			<td>006_00</td>
+			<td>2021-07-29 18:00:00</td>
+			<td>0</td>
+			<td>0</td>
+			<td>800</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>22222222_00</td>
+			<td>00364</td>
+			<td>800</td>
+			<td>2021-01-12 16:62:08</td>
+		</tr>
+		<tr>
+			<td>2_01</td>
+			<td>006_01</td>
+			<td>2021-07-29 18:00:00</td>
+			<td>0</td>
+			<td>0</td>
+			<td>800</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>22222222_01</td>
+			<td>00364</td>
+			<td>800</td>
+			<td>2021-01-12 16:62:08</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>003</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>700</td>
+			<td>4</td>
+			<td>450</td>
+			<td>3</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333</td>
+			<td>00015</td>
+			<td>4150</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+		<tr>
+			<td>3_00</td>
+			<td>003_00</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>700</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333_00</td>
+			<td>00015</td>
+			<td>700</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+		<tr>
+			<td>3_01</td>
+			<td>003_01</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>700</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333_01</td>
+			<td>00015</td>
+			<td>700</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+		<tr>
+			<td>3_02</td>
+			<td>003_02</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>700</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333_02</td>
+			<td>00015</td>
+			<td>700</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+		<tr>
+			<td>3_03</td>
+			<td>003_03</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>700</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333_03</td>
+			<td>00015</td>
+			<td>700</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+		<tr>
+			<td>3_04</td>
+			<td>003_04</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>0</td>
+			<td>0</td>
+			<td>450</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333_04</td>
+			<td>00015</td>
+			<td>450</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+		<tr>
+			<td>3_05</td>
+			<td>003_05</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>0</td>
+			<td>0</td>
+			<td>450</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333_05</td>
+			<td>00015</td>
+			<td>450</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+		<tr>
+			<td>3_06</td>
+			<td>003_06</td>
+			<td>2021-08-15 17:00:00</td>
+			<td>0</td>
+			<td>0</td>
+			<td>450</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>33333333_06</td>
+			<td>00015</td>
+			<td>450</td>
+			<td>2021-01-13 10:08:45</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Я добавил дополнительно 4 колонки group_adult_price, group_adult_quantity, 
+	preferential_adult_price, preferential_adult_quantity после колонок с билетами для детей и взрослых, 
+	т.к. последние являются основными колонками и будут использоваться более часто. 
+	Колонка с количеством купленных билетов идет после колонки с ценой, т.к. в таком же порядке расположены основные колонки.</p>
+<p>Каждый баркод отдельного билета состоит из баркода заказа с добавлением порядкового номера билета через разделяющий знак. 
+	Номера билетов устанавливаются в хронологическом порядке. Т.к. первая часть баркода билета соответствует баркоду всего заказа,
+	всегда можно выделить группу билетов в рамках одного заказа.
+</p>
+
+<script>
+"use strict";
+
+	
+</script>
+
+</body>
+</html>
