@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title> Неватрип </title>
+
+</head>
+<style>
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.disable {
+	display: none;
+}
+</style>
+
+
+<body>
+<select name="route" id="route">
+	<option value="из A в B" selected>из A в B</option>
+	<option value="из B в A">из B в A</option>
+	<option value="из A в B и обратно в А">из A в B и обратно в А</option>
+</select>
+<label for="time">Выберите время</label>
+<select name="time" id="time">
+  <option value="18:00(из A в B)" class = 'AB'>18:00(из A в B)</option>
+  <option value="18:30(из A в B)" class = 'AB'>18:30(из A в B)</option>
+  <option value="18:45(из A в B)" class = 'AB'>18:45(из A в B)</option>
+  <option value="19:00(из A в B)" class = 'AB'>19:00(из A в B)</option>
+  <option value="19:15(из A в B)" class = 'AB'>19:15(из A в B)</option>
+  <option value="21:00(из A в B)" class = 'AB'>21:00(из A в B)</option>
+  <option value="18:30(из B в A)" class = 'BA'>18:30(из B в A)</option>
+  <option value="18:45(из B в A)" class = 'BA'>18:45(из B в A)</option>
+  <option value="19:00(из B в A)" class = 'BA'>19:00(из B в A)</option>
+  <option value="19:15(из B в A)" class = 'BA'>19:15(из B в A)</option>
+  <option value="19:35(из B в A)" class = 'BA'>19:35(из B в A)</option>
+  <option value="21:50(из B в A)" class = 'BA'>21:50(из B в A)</option>
+  <option value="21:55(из B в A)" class = 'BA'>21:55(из B в A)</option>
+</select>
+<div id = 'div00'></div>
+<label for="num">Количество билетов</label>
+<input id="num">
+<button id="count">Посчитать</button>
+
+<script>
+"use strict";
+
+let route = document.querySelector('#route');
+let time = document.querySelector('#time');
+let div00 = document.querySelector('#div00');
+let numOfBilet = document.querySelector('#num');
+let count = document.querySelector('#count');
+let AB = document.querySelectorAll('.AB');
+let BA = document.querySelectorAll('.BA');
+
+let arr = [[18, 30], [18, 45], [19, 0], [19, 15], [19, 35], [21, 50], [21,55]];
+let price;
+let date = new Date();
+
+
+
+route.addEventListener ('blur', function () {
+	let regexp00 = new RegExp (route.value);
+	if (Array.from(BA).map(elem => elem.innerHTML).some(elem => regexp00.test(elem))) {
+		for (let elem of AB) {
+			elem.classList.add('disable');
+		}
+		for (let elem of BA) {
+			elem.classList.remove ('disable');
+		}
+	} else {
+		for (let elem of BA) {
+			elem.classList.add('disable');
+		}
+		for (let elem of AB) {
+			elem.classList.remove ('disable');
+		}
+	}
+});
+
+function func () {
+	if (route.value == "из A в B и обратно в А") {
+		if (div00.children.length != 0) {
+			div00.removeChild(div00.firstElementChild);
+		}
+		let time50 = time.value.split('(');
+		time50 = time50[0].split(':');
+		let routeReturn = document.createElement('select');
+		for (let elem of arr) {
+			let timeOfReturn = new Date(date.getFullYear(), date.getMonth(), date.getDate(), Number(time50[0]), Number(time50[1]) + 50);
+			if (elem[0] + ':' + elem[1] >= timeOfReturn.getHours() + ':' + timeOfReturn.getMinutes()) {
+				let option = document.createElement ('option');
+				option.innerHTML = String(elem[0] + ':' + elem[1]);
+				if (option.innerHTML.length < 5) {
+					option.innerHTML += '0';
+				}
+				routeReturn.appendChild(option);
+			}
+		}
+		div00.appendChild(routeReturn);
+		if (routeReturn.children.length == 0) {
+			routeReturn.style.display = 'none';
+			alert('Рейс в обратном направлении в это время уже не проводится');
+		}
+	} else {
+		if (div00.children.length != 0) {
+			div00.removeChild(div00.firstElementChild);
+		};
+	}
+}
+time.addEventListener('change', func);
+time.addEventListener('blur', func);
+
+num.addEventListener ('blur', function () {
+	if (/[^1-9]/.test(num.value)) {
+		num.value = '';
+	}
+});
+
+count.addEventListener ('click', function () {
+	let time50;
+	if (num.value != 0) {
+		if (route.value == "из A в B и обратно в А") {
+		price = 1200;
+		time50 = div00.firstElementChild.value.split('(');
+		time50 = time50[0].split(':');
+	} else {
+		price = 700;
+		time50 = time.value.split('(');
+		time50 = time50[0].split(':');
+	}
+	let timeOfPath = new Date(date.getFullYear(), date.getMonth(), date.getDate(), Number(time.value.split('(')[0].split(':')[0]), Number(time.value.split('(')[0].split(':')[1]));
+	let timeOfReturn = new Date(date.getFullYear(), date.getMonth(), date.getDate(), Number(time50[0]), Number(time50[1]) + 50);
+	let minutes = timeOfReturn.getMinutes().length > 1 ? '0' + timeOfReturn.getMinutes() : timeOfReturn.getMinutes();
+	let str = Number(num.value) == 1 ? ' билет' : Number(num.value) < 5 ? ' билета' : ' билетов';
+	alert ('Вы выбрали '+ num.value + str + ' по маршруту ' + route.value + ' стоимостью ' + price * Number(num.value) + 'р. Это путешествие займет у вас ' + 
+	(timeOfReturn - timeOfPath) / 1000 / 60 + ' минут. Теплоход отправляется в ' + time.value.split('(')[0] + 
+	', а прибудет в ' + timeOfReturn.getHours() + ':' + minutes + '.');
+	}
+})
+
+
+</script>
+
+</body>
+</html>
